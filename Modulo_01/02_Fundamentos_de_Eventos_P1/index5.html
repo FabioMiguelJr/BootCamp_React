@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <style type="text/css">
+            html {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            div,
+            p,
+            a {
+                padding: 15px 30px;
+                display: block;
+                border: 2px solid #000;
+                background: #fff;
+            }
+        </style>
+        <title>Propagação de Eventos - Capturing</title>
+    </head>
+    <body>
+        <div>
+            DIV
+            <p>
+                P
+                <a href="#">A</a>
+            </p>
+        </div>
+        <script>
+            let elements = document.querySelectorAll("div, p, a");
+            for (let element of elements) {
+                element.addEventListener(
+                    "click",
+                    () => {
+                        alert("Captura: " + element.tagName);
+                    },
+                    true
+                );
+            }
+            //  o addEventListener por default é False que é Bubbling
+            //  para se tornar Capturing deve ser True.
+        </script>
+    </body>
+</html>

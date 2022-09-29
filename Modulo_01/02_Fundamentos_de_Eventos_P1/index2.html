@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Aula 1 - Manipulador Propriedade de elemento</title>
+    </head>
+    <body>
+        <button type="button">Clique Aqui</button>
+        <a href="#">Clique Aqui</a>
+    </body>
+</html>
+<script>
+    var btn = document.querySelector("button");
+    var lnk = document.querySelector("a");
+
+    btn.onclick = () => {
+        alert("Você clicou no boitão!");
+    };
+    lnk.onclick = () => {
+        alert("Você clicou no link!");
+    };
+</script>

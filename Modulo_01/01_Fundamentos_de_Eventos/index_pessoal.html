@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Fundamentos de Eventos</title>
+    </head>
+    <body>
+        <!-- <button onclick="btAlert()">Clique Aqui</button> -->
+        <button id="Elemento botão">Clique aqui</button>
+        <script>
+            var btn = document.querySelector("button");
+
+            /* function btAlert() {
+                window.alert("Botão clicado!");
+            } */
+
+            function btAlert(e) {
+                window.alert("O evento: " + e.type + " foi disparado pelo " + e.target.id);
+            }
+
+            /*             btn.onclick = function () {
+                window.alert("Botão clicado!");
+            };
+            */
+
+            /* function btAlert1() {
+                window.alert("Botão clicado! nº2");
+            }
+            btn.onclick = btAlert1; */
+
+            btn.addEventListener("click", btAlert, false);
+
+            /*
+            alvo.addEventListener(_type, _function, _useCapture)
+            Onde:   _type representa o nome do evento
+                    _function a função que será disparada quando o 
+                    evento ocorrer
+                    _useCapture um boleano para especificar se o 
+                    evento deve ser executado na captura ou na fase 
+                    borbulhante
+            */
+        </script>
+    </body>
+</html>
