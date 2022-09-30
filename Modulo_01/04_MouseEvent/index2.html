@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <title>MouseEvent Click</title>
+    </head>
+    <body>
+        Exemplo de Propriedade dos Eventos
+        <br />
+        <br />
+        <button type="button">Clique Aqui</button>
+    </body>
+    <script>
+        let btn = document.querySelector("button");
+        btn.addEventListener("click", showPosition, false);
+
+        function showPosition(event) {
+            alert("Posição X é: " + event.screenX + " e a posição Y é: " + event.screenY);
+        }
+    </script>
+</html>

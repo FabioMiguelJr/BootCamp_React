@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <title>UIEvent - Beforeunload</title>
+    </head>
+    <body>
+        <a href="http://xpeducacao.com">Página da XP Educação</a>
+    </body>
+    <script>
+        window.addEventListener("beforeunload", () => {
+            console.log("Antes de sair");
+        });
+
+        window.addEventListener("unload", () => {
+            console.log("Saiu da página");
+        });
+    </script>
+</html>

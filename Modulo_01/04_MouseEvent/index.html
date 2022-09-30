@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <title>MouseEvent mousedown</title>
+    </head>
+    <body>
+        Exemplo de mousedown
+        <p id="a">Click Aqui</p>
+    </body>
+    <script>
+        let p = document.getElementById("a");
+        p.addEventListener("mousedown", (event) => (event.target.innerHTML = "O mouse está pressionado"));
+        p.addEventListener("mouseup", (event) => (event.target.innerHTML = "O mouse não está desacionado"));
+    </script>
+</html>
