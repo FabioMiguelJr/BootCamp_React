@@ -1,4 +1,4 @@
-// EXEMPLO DE ESCOPO DE BLOCO
+// EXEMPLO DE ESCOPO DE BLOCO.
 
 if (true) {
     // Escopo de bloco, a variável só definida aqui
