@@ -1,4 +1,4 @@
-// EXEMPLO DE CURRYING
+// EXEMPLO DE CURRYING.
 
 function log(date, type, message) {
     console.log(`[${date.getHours()}:${date.getMinutes()}] [${type}] ${message}`);
