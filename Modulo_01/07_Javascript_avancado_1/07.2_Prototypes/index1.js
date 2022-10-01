@@ -1,4 +1,4 @@
-// EXEMPLO DE HERANÇA POR MEIO DE PROTÓTIPOS
+// EXEMPLO DE HERANÇA POR MEIO DE PROTÓTIPOS.
 
 function Pessoa(nome) {
     if (!nome) {

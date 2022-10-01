@@ -1,4 +1,4 @@
-// EXEMPLO PROTOTYPE - HERANÇA
+// EXEMPLO PROTOTYPE - HERANÇA.
 
 function Carro() {
     this.propietario = "Fábio";
