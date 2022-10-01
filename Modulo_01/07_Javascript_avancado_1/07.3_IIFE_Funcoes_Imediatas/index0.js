@@ -1,4 +1,4 @@
-// IIFE
+// IIFE.
 
 // Funcion Declaration
 // function myFunction() {
