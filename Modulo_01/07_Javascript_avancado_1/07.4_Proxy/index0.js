@@ -31,7 +31,7 @@ console.log(carroProxy.modelo);
 
  */
 
-//EXEMPLO PROXY PARA TRADUTOR
+//EXEMPLO PROXY PARA TRADUTOR.
 let tradutor = {
     "Um Carro": "A Car",
     "Um Ano": "A Year",

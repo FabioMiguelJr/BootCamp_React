@@ -1,4 +1,4 @@
-// EXEMPLO DE PROXY COM REFLECT
+// EXEMPLO DE PROXY COM REFLECT.
 
 let tradutor = {
     "Um Carro": "A Car",
