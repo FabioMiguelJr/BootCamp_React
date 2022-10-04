@@ -1,103 +1,81 @@
-import { listOfProducts, verifyImg } from "./http.js";
+let brand = document.getElementById("filter-brand");
+let type = document.getElementById("filter-type");
+let name = document.getElementById("filter-name");
+let sort = document.getElementById("sort-type");
 
-let products = [];
+(async () => {
+    let response = await fetch("data/products.json");
 
-const listEl = document.querySelector("ul");
+    loadProducts(await response.json());
+})();
 
-async function init() {
-    // let p = listOfProducts();
-    //console.log(p);
-    [products] = await Promise.all([listOfProducts()]);
-    renderProducts();
+let productElement = document.querySelector(".catalog");
+
+function loadProducts(json) {
+    const productsView = json.map((product) => productItem(product)).join("");
+
+    productElement.innerHTML = productsView;
 }
-init();
 
-function renderProducts() {
-    listEl.innerHTML = "";
-    for (const product of products) {
-        const li = document.createElement("li");
-        const divProduct = document.createElement("div");
-        const secProdDesc = document.createElement("section");
-        const h1Name = document.createElement("h1");
-        const divBrand = document.createElement("div");
-        const spanBrand = document.createElement("span");
-        const spanPrice = document.createElement("span");
-        const figProduct = document.createElement("figure");
-        const imgProduct = document.createElement("img");
+function sortProducts(products, sortType) {
+    switch (sortType) {
+        case "Melhores Avaliados":
+            return products.sort((prodA, prodB) =>
+                prodA.rating > prodB.rating ? -1 : prodA.rating < prodB.rating ? 1 : 0
+            );
 
-        spanBrand.className = "product-brand background-brand";
-        spanBrand.textContent = product.brand;
-        spanPrice.className = "product-brand background-price";
-        spanPrice.textContent = product.price;
-        divBrand.className = "product-brands";
+        case "Menores Preços":
+            return products.sort((prodA, prodB) =>
+                prodA.price > prodB.price ? 1 : prodA.price < prodB.price ? -1 : 0
+            );
 
-        divBrand.appendChild(spanBrand);
-        divBrand.appendChild(spanPrice);
+        case "Maiores Preços":
+            return products.sort((prodA, prodB) =>
+                prodA.price > prodB.price ? -1 : prodA.price < prodB.price ? 1 : 0
+            );
 
-        h1Name.className = "product-name";
-        h1Name.textContent = product.name;
-        imgProduct.width = 215;
-        imgProduct.height = 215;
-        imgProduct.alt = product.name;
-        figProduct.className = "product-figure";
-        imgProduct.src = verifyImg(product.image_link);
-        figProduct.appendChild(imgProduct);
+        case "A-Z":
+            return products.sort((prodA, prodB) => (prodA.name > prodB.name ? 1 : prodA.name < prodB.name ? -1 : 0));
 
-        secProdDesc.className = "product-description";
-        secProdDesc.appendChild(figProduct);
-        secProdDesc.appendChild(h1Name);
-        secProdDesc.appendChild(divBrand);
-
-        divProduct.className = "product";
-        divProduct.appendChild(secProdDesc);
-        li.appendChild(divProduct);
-        listEl.appendChild(li);
+        case "Z-A":
+            return products.sort((prodA, prodB) => (prodA.name > prodB.name ? -1 : prodA.name < prodB.name ? 1 : 0));
     }
 }
 
 //EXEMPLO DO CÓDIGO PARA UM PRODUTO
 function productItem(product) {
-    const item = `<div class="product" data-name="NYX Mosaic Powder Blush Paradise" data-brand="nyx" data-type="bronzer" tabindex="508">
-                    <section class="product-description">
-                        <figure class="product-figure">
-                            <img src="${product.image_link}" width="215" height="215" alt="NYX Mosaic Powder Blush Paradise" onerror="javascript:this.src='img/unavailable.png'">
-                        </figure>
-                        <h1 class="product-name"> ${product.name} </h1>
-                        <div class="product-brands">
-                            <span class="product-brand background-brand">${product.brand}</span>
-                            <span class="product-brand background-price">$ ${product.price}</span>
-                        </div>
-                    </section>
-                </div>`;
-    return item;
+    return `<div class="product" data-name="${product.name}" data-brand="${product.brand}" data-type="${
+        product.product_type
+    }" tabindex="${product.id}">
+                <figure class="product-figure">
+                    <img src="${product.image_link}" width="215" height="215" alt="${
+        product.name
+    }" onerror="javascript:this.src='img/unavailable.png'">
+                </figure>
+                <section class="product-description">
+                    <h1 class="product-name">${product.name}</h1>
+                    <div class="product-brands"><span class="product-brand background-brand">${product.brand}</span>
+                    <span class="product-brand background-price">R$ ${(parseFloat(product.price) * 5.5).toFixed(
+                        2
+                    )}</span></div>
+                </section>
+                <section class="product-details">${loadDetails(product)}</section>
+             </div>`;
 }
 
 //EXEMPLO DO CÓDIGO PARA OS DETALHES DE UM PRODUTO
 function loadDetails(product) {
-    let details = `<section class="product-details"><div class="details-row">
-        <div>Brand</div>
-        <div class="details-bar">
-          <div class="details-bar-bg" style="width= 250">nyx</div>
-        </div>
-      </div><div class="details-row">
-        <div>Price</div>
-        <div class="details-bar">
-          <div class="details-bar-bg" style="width= 250">10.49</div>
-        </div>
-      </div><div class="details-row">
-        <div>Rating</div>
-        <div class="details-bar">
-          <div class="details-bar-bg" style="width= 250">5</div>
-        </div>
-      </div><div class="details-row">
-        <div>Category</div>
-        <div class="details-bar">
-          <div class="details-bar-bg" style="width= 250"></div>
-        </div>
-      </div><div class="details-row">
-        <div>Product_type</div>
-        <div class="details-bar">
-          <div class="details-bar-bg" style="width= 250">bronzer</div>
-        </div>
-      </div></section>`;
+    let details = ["brand", "price", "rating", "category", "product_type"];
+
+    return Object.entries(product)
+        .filter(([name, value]) => details.includes(name))
+        .map(([name, value]) => {
+            `<div class="details-row">
+            <div>${name}</div>
+            <div class="details-bar">
+              <div class="details-bar-bg" style="width= 250">${value}</div>
+            </div>
+          </div>`;
+        })
+        .join("");
 }
