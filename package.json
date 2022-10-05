@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "lodash": "^4.17.21"
+    "date-fns": "^2.29.3",
+    "lodash": "^4.17.21",
+    "package": "^1.0.1",
+    "package.json": "^2.0.1"
   }
 }
