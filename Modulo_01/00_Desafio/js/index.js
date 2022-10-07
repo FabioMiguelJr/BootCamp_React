@@ -21,16 +21,13 @@ deaths.textContent = totalDeaths.toLocaleString("pt-BR");
 recovered.textContent = totalRecovered.toLocaleString("pt-BR");
 
 // Gráfico em pizza
-const newConfirmed = resDataGlobal.NewConfirmed;
-const newDeaths = resDataGlobal.NewDeaths;
-const newRecovered = resDataGlobal.NewRecovered;
 let pizza = new Chart(document.getElementById("pizza"), {
 	type: "pie",
 	data: {
 		labels: ["Confirmados", "Mortos", "Recuperados"],
 		datasets: [
 			{
-				data: [newConfirmed, newDeaths, newRecovered],
+				data: [totalConfirmed, totalDeaths, totalRecovered],
 				backgroundColor: ["#3e95cd", "#3c8523", "#42F39f"],
 			},
 		],

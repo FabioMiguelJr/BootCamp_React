@@ -6,8 +6,12 @@ const apiSummary = axios.create({
 
 async function getSummary(folder) {
 	console.log(folder);
-	let res = await apiSummary.get(folder);
-	return res;
+	try {
+		let res = await apiSummary.get(folder);
+		return res;
+	} catch (error) {
+		alert("Erro ao baixar os dados\n" + error);
+	}
 }
 
 export { getSummary };
