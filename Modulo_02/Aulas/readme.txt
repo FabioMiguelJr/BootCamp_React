@@ -1,14 +1,18 @@
 Plano de ensino do Módulo 2
+
 React I
+
 Capítulo 1. Ambiente de Desenvolvimento 
- Aula 1.1 Introdução 
+
+Aula 1.1 Introdução 
 Aula 1.2 Instalação do Node.js 
 Aula 1.3 Instalação do VSCode e create-react-app 
 Aula 1.4 Estudo de um app criado com o create-react-app 
 Aula 1.5 Estudo de um app criado com o projeto-base 
  
 Capítulo 2. Introdução ao React 
- Aula 2.1 – Introdução ao React 
+
+Aula 2.1 – Introdução ao React 
 Aula 2.2 react-hello – Instalação do React Developer Tools e introdução ao JSX 
 Aula 2.3 react-hello – JSX, interpolação e introdução ao Tailwind CSS 
 Aula 2.4 react-hello – Componentização 
@@ -23,7 +27,8 @@ Aula 2.12 react-hello – Utilizando useEffect com cleanup function
 Aula 2.13 react-hello – Indicador de app online/offline 
  
 Capítulo 3 – Criando componentes mais robustos 
- Aula 3.1 – React – Entendendo a prop key, prop drilling e Composition 
+
+Aula 3.1 – React – Entendendo a prop key, prop drilling e Composition 
 Aula 3.2 – react-countries – Organização do projeto 
 Aula 3.3 – react-countries – Implementação do input de filtro de países 
 Aula 3.4 – react-countries – Filtragem de países 
@@ -35,6 +40,7 @@ Aula 3.8 – react-countries – "Prop drilling" e o padrão "Composition"
 Trabalho Prático do Módulo 2
  
 Capítulo 4 – O projeto react-flash-cards-v1 
+
 Aula 4.1 – React – Entendendo a técnica "lifting state up" 
 Aula 4.2 – react-flash-cards-v1 – Organização do projeto 
 Aula 4.3 – react-flash-cards-v1 – Criação do componente <FlashCard /> 
@@ -44,6 +50,7 @@ Aula 4.6 – react-flash-cards-v1 – Implementação de Radio Buttons – parte
 Aula 4.7 – react-flash-cards-v1 – Aplicando a técnica "lifting state up"  
  
 Capítulo 5 – O projeto react-flash-cards-v2 
+
 Aula 5.1 – Introdução  
 Aula 5.2 – react-flash-cards-v2 – Criação do Back End 
 Aula 5.3 – react-flash-cards-v2 – Integração do Back End e Front End – parte 1 
@@ -58,6 +65,7 @@ Aula 5.11 – react-flash-cards-v2 – Finalização do CRUD – parte 1
 Aula 5.12 – react-flash-cards-v2 – Finalização do CRUD – parte 2 
  
 Capítulo 6 – O projeto react-flash-cards-v3 
+
 Aula 6.1 – Introdução 
 Aula 6.2 – Criação do Back End com o glitch.com 
 Aula 6.3 – Implantação do Front End no Netlify 
