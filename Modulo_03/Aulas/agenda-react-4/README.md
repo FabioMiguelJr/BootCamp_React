@@ -13,4 +13,4 @@ Em seguida, entre no diretório e instale as depedências com `npm install`, com
 
 # ESCOPO DESTA SEGUNDA PARTE
 
--   useMemo, useCallback e React.memo
+-   utilizando useReducer
