@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 const StyledHeader = styled.h1`
 	color: #3636e9;
@@ -12,22 +12,51 @@ const StyledData = styled("p")`
 	color: #8d8dff;
 `;
 
-const StyledButton = styled.button`
+type TStyledButtonProps = {
+	varient?: "success" | "failed";
+};
+
+const RotateKeyFrames = keyframes`
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+`;
+
+const Rotate = styled.div`
+	animation: ${RotateKeyFrames} 0.5s;
+`;
+
+const name = "Fábio";
+const text = `Meu nome é ${name}`;
+
+const StyledButton = styled.button<TStyledButtonProps>`
 	background-color: transparent;
 	border-radius: 8px;
 	border: 2px solid black;
 	padding: 8px 16px;
-	margin: 0.5em;
-`;
 
-const StyledSuccessButton = styled(StyledButton)`
-	border-color: green;
-	color: green;
-`;
+	:hover {
+		cursor: pointer;
+		animation: ${RotateKeyFrames} 0.5s;
+	}
 
-const StyledFailedButton = styled(StyledButton)`
-	border-color: red;
-	color: red;
+	${(props) => {
+		if (props.varient === "success") {
+			return css`
+				border-color: green;
+				color: green;
+			`;
+		}
+		if (props.varient === "failed") {
+			return css`
+				border-color: red;
+				color: red;
+			`;
+		}
+	}};
 `;
 
 function App() {
@@ -38,9 +67,11 @@ function App() {
 			<StyledData>+55-21-9-9212-5122</StyledData>
 			<StyledData>Brasileiro</StyledData>
 
-			<StyledSuccessButton>Adicionar</StyledSuccessButton>
-			<StyledFailedButton>Remover</StyledFailedButton>
-			<StyledButton>Detalhes</StyledButton>
+			<StyledButton varient="success">Adicionar</StyledButton>
+			<StyledButton style={{ marginLeft: "8px" }} varient="failed">
+				Remover
+			</StyledButton>
+			<StyledButton style={{ marginLeft: "8px" }}>Detalhes</StyledButton>
 		</div>
 	);
 }
