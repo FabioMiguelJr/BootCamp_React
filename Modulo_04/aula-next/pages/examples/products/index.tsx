@@ -18,8 +18,6 @@ const Products = () => {
 					</Link>
 				</li>
 			))}
-			{/* <Link href="exemples/products/">
-			</Link> */}
 		</ul>
 	);
 };
