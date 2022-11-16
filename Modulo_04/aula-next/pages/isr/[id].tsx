@@ -1,11 +1,11 @@
+import Image from "next/image";
+
 export async function getStaticPaths() {
 	const products = await fetch("https://fakestoreapi.com/products").then((res) => res.json());
 
-	console.log(products);
-
 	const paths = products.map((item: any) => ({
 		params: {
-			id: item.id,
+			id: item.id.toString(),
 			title: item.title,
 			price: item.price,
 			category: item.category,
@@ -13,7 +13,6 @@ export async function getStaticPaths() {
 			image: item.image,
 		},
 	}));
-	console.log(paths);
 	return {
 		paths,
 		fallback: false,
@@ -21,8 +20,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: any }) {
-	const id: string = params.id;
-	const product = await fetch(`https://fakestoreapi.com/products/${id}`).then((res) =>
+	const product = await fetch(`https://fakestoreapi.com/products/${params.id}`).then((res) =>
 		res.json()
 	);
 
@@ -35,8 +33,16 @@ const StaticPaths = (props: any) => {
 
 	return (
 		<div>
-			<div>{props.lastRenderer}</div>
-			<span>{product.title}</span>
+			<div className="container justify-content-center" id="container-home">
+				<div>
+					<div>
+						<p>{product.title}</p>
+					</div>
+					<div>
+						<Image src={product.image} alt={product.title} width={300} height={300} />{" "}
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };
