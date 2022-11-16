@@ -1,41 +1,42 @@
 export async function getStaticPaths() {
-	const coins = await fetch(
-		"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=10&page=1&sparkline=false"
-	).then((res) => res.json());
+	const products = await fetch("https://fakestoreapi.com/products").then((res) => res.json());
 
-	const paths = coins.map((item: any) => ({
+	console.log(products);
+
+	const paths = products.map((item: any) => ({
 		params: {
 			id: item.id,
+			title: item.title,
+			price: item.price,
+			category: item.category,
+			description: item.description,
+			image: item.image,
 		},
 	}));
-
+	console.log(paths);
 	return {
 		paths,
 		fallback: false,
 	};
 }
 
-// "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=10&page=1&sparkline=false"
 export async function getStaticProps({ params }: { params: any }) {
-	const id = "bitcoin";
-	const coins = await fetch(`https://api.coingecko.com/api/v3/coins/${params.id}`).then((res) =>
+	const id: string = params.id;
+	const product = await fetch(`https://fakestoreapi.com/products/${id}`).then((res) =>
 		res.json()
 	);
 
 	const date = new Date();
-	// return { props: { coins, propTest: "This is a test" } };
-	return { props: { coins, lastRenderer: date.getSeconds() }, revalidate: 5 };
+	return { props: { product, lastRenderer: date.getSeconds() } };
 }
 
 const StaticPaths = (props: any) => {
-	const coin = props.coins;
+	const product = props.product;
 
 	return (
 		<div>
 			<div>{props.lastRenderer}</div>
-			<span>
-				{coin.name} {coin.block_time_in_minutes}{" "}
-			</span>
+			<span>{product.title}</span>
 		</div>
 	);
 };
