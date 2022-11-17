@@ -47,3 +47,6 @@ details.
 -   Otimização de imagens
 -   Internacionalização
 -   Environment variables
+-   Font optimization
+-   Static file serving
+-   Fast refresh

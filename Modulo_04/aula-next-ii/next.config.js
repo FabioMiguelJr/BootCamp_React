@@ -5,6 +5,10 @@ const nextConfig = {
 	images: {
 		domains: ["assets.coingecko.com"],
 	},
+	i18n: {
+		locales: ["pt", "en"],
+		defaultLocale: "pt",
+	},
 };
 
 module.exports = nextConfig;
