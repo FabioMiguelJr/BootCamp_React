@@ -1,11 +1,10 @@
-import Box from "@material-ui/core/Box";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import React, { useEffect, useState } from "react";
-import { TextField } from "@material-ui/core";
+import { Box, TextField } from "@material-ui/core";
 import { getDespesasEndpoint, getDespesasMesEndpoit, IDespesas } from "./backend";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -46,6 +45,7 @@ export default function DespesasScreen1() {
 
 	useEffect(() => {
 		console.log("2");
+		// eslint-disable-next-line
 		despesasFiltro.map((filtro, i) => {
 			if (i === 0) {
 				setAnos(filtro.mes.substring(0, 4));
@@ -74,6 +74,7 @@ export default function DespesasScreen1() {
 
 	function soma(despesas: IDespesas[]): number {
 		let soma: number = 0;
+		// eslint-disable-next-line
 		despesas.map((despesa) => {
 			soma = soma + Number(despesa.valor);
 		});
@@ -84,6 +85,17 @@ export default function DespesasScreen1() {
 
 	return (
 		<>
+			<Box
+				display="flex"
+				alignItems="center"
+				justifyContent="center"
+				padding="4px 8px"
+				height="3em"
+				bgcolor="primary.main"
+				fontSize="1em"
+			>
+				<Box>Teste</Box>
+			</Box>
 			<Box display="flex" alignItems="center" padding="8px 16px" height="3em">
 				{/* Select dos anos - por enquanto fixo */}
 				<Box flex="1">
